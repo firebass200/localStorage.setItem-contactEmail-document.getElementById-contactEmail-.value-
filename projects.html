@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Projects</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('https://source.unsplash.com/1600x900/?coding') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.6);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .container {
+            position: relative;
+            z-index: 1;
+            padding: 50px;
+            max-width: 900px;
+            margin: auto;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #8A2BE2;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, textarea {
+            padding: 10px;
+            border: 2px solid #8A2BE2;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        button {
+            padding: 10px;
+            background-color: #8A2BE2;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #7B1FA2;
+        }
+        /* Navigation */
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        .nav-buttons a {
+            background-color: #FF1493;
+            color: #fff;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+        }
+        .nav-buttons a:hover {
+            background-color: #C71585;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="container">
+        <h2>Projects</h2>
+        <form id="projectsForm">
+            <label for="project1">Project 1:</label>
+            <input type="text" id="project1" required>
+
+            <label for="project1Desc">Description:</label>
+            <textarea id="project1Desc" rows="3" required></textarea>
+
+            <label for="project2">Project 2:</label>
+            <input type="text" id="project2" required>
+
+            <label for="project2Desc">Description:</label>
+            <textarea id="project2Desc" rows="3" required></textarea>
+
+            <button type="submit">Save</button>
+        </form>
+        <div class="nav-buttons">
+            <a href="index.html">Home</a>
+            <a href="personal.html">Personal Information</a>
+            <a href="education.html">Education</a>
+            <a href="work.html">Work Experience</a>
+            <a href="skills.html">Skills</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+
+    <script>
+        // Load existing data
+        document.addEventListener('DOMContentLoaded', function() {
+            const project1 = localStorage.getItem('project1') || '';
+            const project1Desc = localStorage.getItem('project1Desc') || '';
+            const project2 = localStorage.getItem('project2') || '';
+            const project2Desc = localStorage.getItem('project2Desc') || '';
+
+            document.getElementById('project1').value = project1;
+            document.getElementById('project1Desc').value = project1Desc;
+            document.getElementById('project2').value = project2;
+            document.getElementById('project2Desc').value = project2Desc;
+        });
+
+        // Save data to localStorage
+        document.getElementById('projectsForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            localStorage.setItem('project1', document.getElementById('project1').value);
+            localStorage.setItem('project1Desc', document.getElementById('project1Desc').value);
+            localStorage.setItem('project2', document.getElementById('project2').value);
+            localStorage.setItem('project2Desc', document.getElementById('project2Desc').value);
+            alert('Projects saved!');
+        });
+    </script>
+</body>
+</html>
